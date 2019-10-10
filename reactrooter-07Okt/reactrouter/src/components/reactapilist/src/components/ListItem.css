@@ -1,0 +1,14 @@
+.listItem{
+   list-style-type: none;
+    margin-left:500px;
+    width:20%;
+   height:50px;
+    text-align: center;
+   padding:10px;
+
+}
+
+.listItem:hover{
+background-color: blue;
+cursor:pointer;
+}

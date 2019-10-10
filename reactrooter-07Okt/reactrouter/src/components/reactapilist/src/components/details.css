@@ -1,0 +1,8 @@
+
+.details{
+    background-color: chartreuse;
+}
+
+.details:hover{
+background-color: antiquewhite;
+}
