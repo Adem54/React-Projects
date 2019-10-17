@@ -4,20 +4,3 @@ sabit api:https://jsonplaceholder.typicode.com/users
 değişken api:https://uinames.com/api/?ext&amount=5
 mini değişken api:https://uinames.com/api/?amount=5
 
-Romaina
-Slovakia
-Greece
-Turkey
-Azerbaijan
-Spain
-Nepal
-Belgium
-Brazil
-Canada
-China
-Denmark
-England
-Finland
-France
-Georgia
-Germany

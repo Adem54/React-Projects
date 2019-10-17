@@ -12,7 +12,7 @@ import reactformapp from "./components/reactform/src/App3"
 import "./App.css";
 import { BrowserRouter as Router, Route,NavLink,Link,Switch } from "react-router-dom";
 
- const homepage=()=>{
+ const homepage=()=>{//Component isimleri büyük olmalı....
    return(
      <h1>Welcome to HomePage!</h1>
    )
