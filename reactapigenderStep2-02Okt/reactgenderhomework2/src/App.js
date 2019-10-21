@@ -156,7 +156,7 @@ class App extends React.Component {
     console.log("Render dan önce people verisi: ", this.state.people);
 
     return Nextstate.index !== this.state.index;
-  } //return sonucu true olursa render eder olmaz false olursa render etmeyecek...
+  } //return sonucu true olursa render eder  false olursa render etmeyecek...
 
   render() {
     const { people, index } = this.state;
