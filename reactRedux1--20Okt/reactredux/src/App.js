@@ -86,7 +86,7 @@ console.log("Store.dispatch den sonra store.getState(): ",store.getState());//Bu
 function App() {
   return (
     <div className="App">
-      <h3>Rect-Redux a hoşgeldiniz!!</h3>
+      <h3>Rect-Redux !!</h3>
     </div>
   );
 }
