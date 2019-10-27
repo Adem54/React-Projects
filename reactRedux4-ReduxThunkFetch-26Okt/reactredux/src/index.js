@@ -6,7 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+//import { default as ReduxThunk } from 'redux-thunk';
 import logger from "redux-logger";
+//redux-promise-middleware eklentisi,modülü,paketi
+import axios from "axios";
+import reduxPromiseMiddleware from "redux-promise-middleware";
 
 const initalState = {
   fetching: false,
@@ -34,19 +38,25 @@ const reducer = (state = initalState, action) => {
   }
 };
 
-const middleware = applyMiddleware(thunk, logger);
+const middleware = applyMiddleware(reduxPromiseMiddleware, thunk, logger);
 const store = createStore(reducer, middleware);
 //console.log(store.getState());
 //Biz store.dispatch içerisinde direk obje yazmak yerine parametresi dispatch olan bir fonksiyon return ediyoruz burda,yani biz eğer ayrı bir sayfada kullanmış oldaydık bu dispatch işlemini o zaman orda return dispatch=>{} şeklinde bir fonksiyon yazackatık ve bu bize ne sağlıyor yani bizim parametresmizde bir dispatch olması bize biz aslında bir dispatch işlemi içinde veya bir action işlemi içerisinde birden fazla dispatch i yapabilmemizi sağlıyor ki bu bizim için iyi birşey bir sıralama olmasını sağlıyoruz ve bir action içerisinde hem loading,hem error,hemde fetch işlemini yapabiliyour....
 //Burda şuna dikkat edelim biz dispatch parametresinden sonra dispatch yapıp içerisinde işlemleri yapabiliriz ve farklı bir dispatch işlemi yapacağımız zaman da hemen bir alta geçer yeni bir dispatch açıp yeni dispatch imizi yazarız yani şöyle düşünelim her bir dispatch bir state değişikliğidir aslında her bir dispatch bir SetState olayıdır aslında
 //Burda öncelikle yaptığmız olay store.dispatch içerisine action yerleştirmek biz öncelikle sotre.dispatch içerisine koyacağımız action ı dışarda tanımlayabilirdik ve ana action ımızın içerisine de 3 tane action yerleştirdik her bir dispatch birer action dır bunu unutmayalım ondan dolayı sadece biz action oluştururken fonksiyon olarak oluşturmak zorundayız çünkü redux-thunk actionlarımızı özellikle fetch olayında bizim normal redux kullanmadığmız zaman yaşadğımız sorunlarımız oluyordu bu thunk sayesinde biz action larımızı fonksiyon action olarak yazmamız thunk ın bizim işlemlerimizi yapması açısından çok önemlidir ki biz action ımızı yazıp sonra gerisini thunk halledip işi bitince bize veriyi tekrar sorunsuz birşekilde döndermiş oluyor...
 
-const userAction=()=>{
-   return async dispatch => {
+
+
+
+
+
+
+const userAction = () => {
+  return async dispatch => {
     dispatch({
       type: "FETCH_USERS_START"
     });
-  
+
     try {
       //const response=await fetch("https://jsonplaceholder.typicode.com/users/");
       const getUsers = await (await fetch(
@@ -65,10 +75,10 @@ const userAction=()=>{
         payload: "ERROR"
       });
     }
-  }
-
-}
+  };
+};
 store.dispatch(userAction());
+
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
