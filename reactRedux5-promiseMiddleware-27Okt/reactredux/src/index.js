@@ -65,3 +65,25 @@ ReactDOM.render(<App />, document.getElementById("root"));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+/* axios ile apimizden veriyi promise middleware ile çok kolay alabiliriz...
+const process = store.dispatch({
+  type: "FETCH_USERS",
+  payload: axios.get("https://jsonplaceholder.typicode.com/users/").then(response=>response.data)
+});
+
+process.then(response=>{
+  console.log("Response: ",response.value);
+})
+*/
+/*
+//redux-promise-middleware sayesinde bizim aşağıda yaptığımız işlemlerin tamamını bir dispatch işlemi ile yapmamıza imkan sağlıyor yani biz buraya tip olarak ne yazarsak bize o yazdığımız tip meselsa START olsun 1-START PENDING(BEKLMEDE) 2)START FULFILLED (TAMAMLANMIŞ)  3)START-REJECTED(BU DA HATA DURUMUNDA) biz sadece store.dispatch({}) içerisinde bir type veririz ve payload ı api den veri alma işlemin i girersek o zaman console da kendi sinin dispatch işlemlerini yaptığını görebiliriz ve bize sadece dispatch işlemlerindeki tiplerin isimlerini reducer içerisinde case e yazarak karşılayıp ona göre payload verilerini reducer içinde değiştirmek kalır yani biz 3 dispatch yerine tek dispatch ile işi halletmiş olurz
+
+
+const process=store.dispatch({
+  type:"FETCH_USERS",
+  payload:fetch("https://jsonplaceholder.typicode.com/users/").then(res=> res.json())
+})
+process.then(res=>console.log("Resp: ",res.value)) //Aşağıdaki işlemlerin yerine sadece bu işlemi yaparak da bir apiden veri çekme işlemini çabucak yapabiliriz..
+
+*/

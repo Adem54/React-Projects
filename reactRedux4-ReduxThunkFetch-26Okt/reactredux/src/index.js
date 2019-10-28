@@ -77,6 +77,9 @@ const userAction = () => {
     }
   };
 };
+
+//Biz normalde userAction() ı tamamen kaldırıp direk parmetreye dispatch verip arrow funciton ile süslü parantezleri içip doğrudan dispatch() içerisinde action objelerini yazabilirdik de ikisi de aynı şeydir aslında 
+//store.dispatch(async dispatch=>{ dispatch({type:"FETCH_USERS_START"}) dispatch({type }) }) şeklinde de yazabilirdik aslında...
 store.dispatch(userAction());
 
 
